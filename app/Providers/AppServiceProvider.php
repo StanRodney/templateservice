@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('auth.token', function ($app) {
+            return new \App\Http\Middleware\RequestToken();
+        });
+
     }
 
     /**
